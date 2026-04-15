@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import styles from "./dashboard.module.css";
+import styles from "./home.module.css";
+import Navbar from "@/components/layout/Navbar";
+import Chatbot from "@/components/Chatbot";
 
-export default function Dashboard() {
+export default function Home() {
   const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -18,6 +21,8 @@ export default function Dashboard() {
       } else {
         setUser(data.user);
       }
+
+      setLoading(false);
     };
 
     getUser();
@@ -28,36 +33,48 @@ export default function Dashboard() {
     router.push("/auth/login");
   };
 
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <p style={{ textAlign: "center", marginTop: "20px" }}>Loading...</p>
+      </>
+    );
+  }
+
   return (
-    <div className={styles.container}>
-      <h1 className={styles.header}>Dashboard</h1>
+    <>
+      <Navbar />
 
-      {user ? (
-        <div className={styles.card}>
-          <p className={styles.item}>
-            <span className={styles.label}>Email:</span>{" "}
-            <span className={styles.value}>{user.email}</span>
-          </p>
+      <div className={styles.container}>
+        <h1 className={styles.header}>Home</h1>
 
-          <p className={styles.item}>
-            <span className={styles.label}>Nama:</span>{" "}
-            <span className={styles.value}>
-              {user.user_metadata?.display_name}
-            </span>
-          </p>
+        {user && (
+          <div className={styles.card}>
+            <p className={styles.item}>
+              <span className={styles.label}>Email:</span>{" "}
+              <span className={styles.value}>{user.email}</span>
+            </p>
 
-          <p className={styles.item}>
-            <span className={styles.label}>Phone:</span>{" "}
-            <span className={styles.value}>{user.user_metadata?.phone}</span>
-          </p>
+            <p className={styles.item}>
+              <span className={styles.label}>Nama:</span>{" "}
+              <span className={styles.value}>
+                {user.user_metadata?.display_name}
+              </span>
+            </p>
 
-          <button className={styles.logout} onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+            <p className={styles.item}>
+              <span className={styles.label}>Phone:</span>{" "}
+              <span className={styles.value}>{user.user_metadata?.phone}</span>
+            </p>
+
+            <button className={styles.logout} onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        )}
+      </div>
+       <Chatbot />
+    </>
   );
 }
