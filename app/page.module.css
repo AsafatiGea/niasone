@@ -1,40 +1,125 @@
+/* Container utama */
 .container {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
   background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  color: white;
   font-family: Arial, sans-serif;
 }
 
-.card {
-  background: white;
-  padding: 40px;
-  border-radius: 16px;
+/* HERO SECTION */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  padding: 40px 20px;
 }
 
 .title {
-  font-size: 28px;
+  font-size: 48px;
   font-weight: bold;
-  color: #1e3a8a;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
-.link {
-  display: block;
-  margin: 10px 0;
-  padding: 12px;
-  background: #1e3a8a;
+.subtitle {
+  font-size: 18px;
+  max-width: 600px;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+/* BUTTONS */
+.actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.primaryBtn {
+  padding: 12px 20px;
+  background: #22c55e;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.primaryBtn:hover {
+  background: #16a34a;
+}
+
+.secondaryBtn {
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid white;
   color: white;
   border-radius: 10px;
   text-decoration: none;
   transition: 0.3s;
 }
 
-.link:hover {
-  background: #0f172a;
+.secondaryBtn:hover {
+  background: white;
+  color: #1e3a8a;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.section h2 {
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* CARD */
+.card {
+  background: white;
+  color: #1e3a8a;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* FOOTER */
+.footer {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.authLinks {
+  margin-top: 10px;
+}
+
+.authLinks a {
+  margin: 0 10px;
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.authLinks a:hover {
+  text-decoration: underline;
 }
