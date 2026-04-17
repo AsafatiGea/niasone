@@ -29,7 +29,7 @@ export default function Login() {
     if (error) {
       alert(error.message);
     } else {
-      router.push("/main/dashboard");
+      router.push("/dashboard");
     }
   };
 

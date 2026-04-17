@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
+import { User } from "@/types/user";
 import styles from "./home.module.css";
 import Navbar from "@/components/layout/Navbar";
 import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -19,7 +20,7 @@ export default function Home() {
       if (!data.user) {
         router.push("/auth/login");
       } else {
-        setUser(data.user);
+        setUser(data.user as User);
       }
 
       setLoading(false);
@@ -59,13 +60,15 @@ export default function Home() {
             <p className={styles.item}>
               <span className={styles.label}>Nama:</span>{" "}
               <span className={styles.value}>
-                {user.user_metadata?.display_name}
+                {user.user_metadata?.display_name ?? "N/A"}
               </span>
             </p>
 
             <p className={styles.item}>
               <span className={styles.label}>Phone:</span>{" "}
-              <span className={styles.value}>{user.user_metadata?.phone}</span>
+              <span className={styles.value}>
+                {user.user_metadata?.phone ?? "N/A"}
+              </span>
             </p>
 
             <button className={styles.logout} onClick={handleLogout}>
