@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import styles from "./register.module.css";
+import styles from "./page.module.css";
 
 export default function Register() {
   const [email, setEmail] = useState("");
