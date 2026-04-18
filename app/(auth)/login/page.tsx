@@ -5,15 +5,14 @@ import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import styles from "../auth.module.css";
 
-export default function Register() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
-  const handleRegister = async () => {
+  const handleLogin = async () => {
     if (!email || !password) {
       alert("Email dan password wajib diisi");
       return;
@@ -21,34 +20,24 @@ export default function Register() {
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
-      options: {
-        data: {
-          display_name: name,
-          phone: phone,
-        },
-      },
     });
 
     setLoading(false);
 
     if (error) {
       alert(error.message);
-    } else {
-      alert("Berhasil daftar!");
-      router.push("/auth/login"); // ✅ FIXED
+    } else if (data.session) {
+      router.replace("/dashboard");
     }
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.brand}>NiasOne</div>
-
       <div className={styles.card}>
-        <h1 className={styles.title}>Create Account</h1>
-        <p className={styles.subtitle}>Mulai perjalanan digitalmu di NiasOne</p>
+        <h1 className={styles.title}>Login</h1>
 
         <input
           className={styles.input}
@@ -63,33 +52,26 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <input
-          className={styles.input}
-          placeholder="Nama"
-          onChange={(e) => setName(e.target.value)}
-        />
-
-        <input
-          className={styles.input}
-          placeholder="Phone"
-          onChange={(e) => setPhone(e.target.value)}
-        />
-
         <button
           className={styles.button}
-          onClick={handleRegister}
+          style={{ position: "relative", zIndex: 10 }}
+          onClick={(e) => {
+            e.preventDefault(); // 🔥 cegah gangguan dari element lain
+            console.log("CLICKED");
+            handleLogin();
+          }}
           disabled={loading}
         >
-          {loading ? "Loading..." : "Daftar"}
+          {loading ? "Loading..." : "Login"}
         </button>
 
         <p className={styles.footer}>
-          Sudah punya akun?{" "}
+          Belum punya akun?{" "}
           <span
             className={styles.link}
-            onClick={() => router.push("/auth/login")}
+            onClick={() => router.push("/register")}
           >
-            Login
+            Daftar
           </span>
         </p>
       </div>

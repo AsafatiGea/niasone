@@ -1,0 +1,48 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #262626;
+  color: white;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 15px;
+  color: var(--muted);
+}
+
+.link {
+  color: var(--accent);
+  cursor: pointer;
+}

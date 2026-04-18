@@ -5,23 +5,32 @@ import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
 import styles from "../auth.module.css";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
+
   const router = useRouter();
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     if (!email || !password) {
-      alert("Email dan password wajib diisi");
+      alert("Isi semua field");
       return;
     }
 
     setLoading(true);
 
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: {
+          display_name: name,
+          phone,
+        },
+      },
     });
 
     setLoading(false);
@@ -29,48 +38,45 @@ export default function Login() {
     if (error) {
       alert(error.message);
     } else {
-      router.push("/main/dashboard");
+      alert("Berhasil daftar!");
+      router.replace("/login");
     }
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.brand}>NiasOne</div>
-
       <div className={styles.card}>
-        <h1 className={styles.title}>Welcome Back</h1>
-        <p className={styles.subtitle}>Login ke akun kamu</p>
+        <h1 className={styles.title}>Register</h1>
 
         <input
           className={styles.input}
           placeholder="Email"
           onChange={(e) => setEmail(e.target.value)}
         />
-
         <input
           className={styles.input}
           type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        <input
+          className={styles.input}
+          placeholder="Nama"
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          className={styles.input}
+          placeholder="Phone"
+          onChange={(e) => setPhone(e.target.value)}
+        />
 
         <button
           className={styles.button}
-          onClick={handleLogin}
+          onClick={handleRegister}
           disabled={loading}
         >
-          {loading ? "Loading..." : "Login"}
+          {loading ? "Loading..." : "Daftar"}
         </button>
-
-        <p className={styles.footer}>
-          Belum punya akun?{" "}
-          <span
-            className={styles.link}
-            onClick={() => router.push("/auth/register")}
-          >
-            Daftar
-          </span>
-        </p>
       </div>
     </div>
   );

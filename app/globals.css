@@ -1,0 +1,30 @@
+:root {
+  --bg: #0a0a0a;
+  --card: #1a1a1a;
+  --primary: #e11d48;   /* merah */
+  --accent: #facc15;    /* kuning */
+  --text: #ffffff;
+  --muted: #a1a1aa;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
