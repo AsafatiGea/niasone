@@ -1,0 +1,65 @@
+.page {
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 400px;
+}
+
+.backBtn {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+
+/* ✅ FIX: pakai class, bukan tag langsung */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+/* ✅ FIX utama di sini */
+.button {
+  padding: 10px;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  color: gray;
+}

@@ -1,0 +1,48 @@
+.container {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.title {
+  font-size: 40px;
+  color: var(--accent);
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.tabs button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #2a2a2a;
+  color: white;
+  cursor: pointer;
+}
+
+.tabs button:hover {
+  background: var(--primary);
+}
+
+.card {
+  max-width: 500px;
+  margin: auto;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}

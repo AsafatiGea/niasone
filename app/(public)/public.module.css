@@ -1,17 +1,47 @@
-.container {
-  text-align: center;
-  padding: 100px 20px;
-}
-
 .navbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #111;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.navlinks {
+  display: flex;
+  gap: 20px;
+}
+
+.navlinks a {
+  color: white;
+  text-decoration: none;
+}
+
+.auth {
+  display: flex;
   gap: 15px;
-  padding: 20px;
+  align-items: center;
+}
+
+.registerBtn {
+  background: var(--primary);
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: white;
+}
+
+.container {
+  text-align: center;
+  padding: 120px 20px;
 }
 
 .title {
-  font-size: 48px;
+  font-size: 52px;
   font-weight: bold;
   color: var(--accent);
 }
@@ -19,10 +49,11 @@
 .subtitle {
   margin-top: 10px;
   color: var(--muted);
+  font-size: 18px;
 }
 
 .actions {
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .button {
@@ -33,4 +64,16 @@
   border-radius: 8px;
   color: white;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  padding: 12px 20px;
+  margin: 5px;
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  color: var(--primary);
+  font-weight: bold;
+  cursor: pointer;
 }
