@@ -30,7 +30,7 @@ export default function Login() {
     if (error) {
       alert(error.message);
     } else if (data.session) {
-      router.replace("/dashboard");
+      router.replace("./dashboard");
     }
   };
 
